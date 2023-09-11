@@ -42,11 +42,12 @@ function createDiv(tile) {
   tile.element = element;
 
   const boardElement = document.querySelector(".board");
+  boardElement.style.setProperty("--size", boardSize);
   boardElement.append(tile.element);
   return element;
 }
 
-const boardSize = 10;
+const boardSize = 5;
 createGameBoard(boardSize);
 
 
