@@ -1,8 +1,8 @@
-# _Template Title_
+# _Minesweeper_
 
-#### By _**Ian Bravo**_
+#### By _**Ian Bravo**, **Paul LeTourneau**, **Richard Barbour**, **Seth Gonzales**_
 
-#### _This project ..._
+#### _This project will..._
 
 ## GitHub Page ##
 
@@ -16,7 +16,7 @@ https://ian-bravo.github.io/template/
 * _JavaScript_
 * _npm v9.6.7_
 * _node v18.17.1_
-* _API_
+
 
 
 ## Description
@@ -25,24 +25,17 @@ This webpage will ...
 
 ## Setup/Installation Requirements
 
-Generate an API key for template:
-1. Create an account with template: link
-2. Sign-in and click on the API keys tab.
-3. Locate your API key named _Default_. This will be used later in step 7.
-
 Cloning the Repo:
 1. Open Terminal.
 2. Change your directory to where you would want the cloned directory.
 3. Input the following command into your terminal:  
  _git clone https://github.com/ian-bravo/link_
 4. Navigate to the top level of this newly cloned directory.
-5. Generate a .env file at the top level of the newly cloned directory; `$ touch .env`
-6. Within the .env file, add the following: `API_KEY=123yourAPIkey456`. Replace "123yourAPIkey456" with your actual API key.
-7. Install all packages with `$ npm install`
-8. Build the project using webpack with `$ npm run build`
-9. Start a development server with `$ npm run start`
-10. Lint JS files in the src folder with `$ npm run lint`
-11. Run tests with Jest using `$ npm run test`
+5. Install all packages with `$ npm install`
+6. Build the project using webpack with `$ npm run build`
+7. Start a development server with `$ npm run start`
+8. Lint JS files in the src folder with `$ npm run lint`
+<!-- 9. Run tests with Jest using `$ npm run test` -->
 
 
 ## Known Bugs
