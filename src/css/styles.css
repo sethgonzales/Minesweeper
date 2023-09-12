@@ -8,6 +8,10 @@
   /* background-image: url("./flag-triangle-svgrepo-com.svg"); */
 }
 
+.revealed {
+  background-color: green;
+}
+
 body {
   margin: 0;
   background-color: #333;
@@ -24,7 +28,7 @@ body {
   grid-template-columns: repeat(var(--size), 60px);
   grid-template-rows:repeat(var(--size), 60px);
   gap: 4px;
-  background-color: #777;
+  background-color: #777777;
 }
 
 .board > * {
