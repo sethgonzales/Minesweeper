@@ -69,11 +69,12 @@ function createDiv(boardSize, tile, board) {
 function reveal(tile, mines, surroundingTiles) {
   if (mines.length === 0) { 
     surroundingTiles.forEach(revealTile); 
+    //somehow add how many bombs are nearby
   } else { 
      const mineNumber = document.createElement("p");
      mineNumber.textContent = mines.length
      tile.element.appendChild(mineNumber);
-     console.log("A p was created with the value: " + mines.length)
+    //  revealTile(tile); need to add recursion, add if statement ~hidden?
   }
 }
 
@@ -87,9 +88,7 @@ function revealTile(tile, board) {
   } else {
     tile.element.setAttribute("class", "revealed");
     tile.hidden = false;
-    // console.log(tile.hidden);
-    nearbyTile(tile, board);
-
+      nearbyTile(tile, board);
   }
   // console.log(board); //remove board console logs and then from revealTile, createDiv param and argument. 
 }
