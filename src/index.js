@@ -39,8 +39,9 @@ function setMinePosition (board, numberOfMines) {
 function createDiv(boardSize, tile) {
   const element = document.createElement("div");
   tile.element = element;
-  tile.element.addEventListener("click", revealTile(tile));
-
+  tile.element.addEventListener("click", function() {
+    revealTile(tile);
+  });
   const boardElement = document.querySelector(".board");
   boardElement.style.setProperty("--size", boardSize);
   boardElement.append(tile.element);
@@ -48,8 +49,9 @@ function createDiv(boardSize, tile) {
 }
 
 function revealTile(tile) {
+  
   if (tile.mine === true) {
-    console.log("clicked");
+    console.log(tile.mine);
     //change CSS color to red for that tile
     // game over
   } else {
@@ -66,5 +68,5 @@ function revealTile(tile) {
 
 window.addEventListener("load", function() {
 createGameBoard(5, 10);
-document.querySelector("div.board").addEventListener("click", revealTile);
+// document.querySelector("div.board").addEventListener("click", revealTile);
 });
