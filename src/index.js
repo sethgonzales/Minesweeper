@@ -23,13 +23,12 @@ console.log(board);
 return board;  
 }
 
-function nearbyTile ({x, y}, board) {
+function nearbyTile (tile, board) {
 let surroundingTiles = [];
-// const nearbyTileLocation = []
 for ( let xNearBy = -1; xNearBy <= 1; xNearBy ++) {
   for ( let yNearBy = -1; yNearBy <= 1; yNearBy ++) {
-    const newX = x + xNearBy;
-    const newY = y + yNearBy;
+    const newX = tile.x + xNearBy;
+    const newY = tile.y + yNearBy;
 
     if (newX >= 0 && newX < board.length && newY >= 0 && newY < board.length) {
      const nearTile = board[newX][newY];
@@ -37,18 +36,9 @@ for ( let xNearBy = -1; xNearBy <= 1; xNearBy ++) {
     }
   }
 }
-  checkAdjacentTiles(surroundingTiles);
-}
-
-function checkAdjacentTiles(surroundingTiles) {
-  //create an array of surrounding tiles  
-
-      // EXAMPLE: adjTiles = [t1.mine=t, t2.mine=f, t3.mine=f]
-  
-  //look through array and filter to create array of tiles with mines =true
- const mines = surroundingTiles.filter(tile => tile.mine===true);
- console.log(mines);
-//       EXAMPLE: mines = [t1.mine=t]
+console.log(surroundingTiles)
+  const mines = surroundingTiles.filter(tile => tile.mine===true);
+  reveal(tile, mines, surroundingTiles);
 }
 
 function setMinePosition (board, numberOfMines) {
@@ -68,7 +58,6 @@ function createDiv(boardSize, tile, board) {
   const element = document.createElement("div");
   tile.element = element;
   tile.element.addEventListener("click", function() {
-    nearbyTile(tile, board);
     revealTile(tile, board);
   });
   const boardElement = document.querySelector(".board");
@@ -77,20 +66,20 @@ function createDiv(boardSize, tile, board) {
   return element;
 }
 
+function reveal(tile, mines, surroundingTiles) {
+  if (mines.length === 0) { 
+    surroundingTiles.forEach(revealTile); 
+  } else { 
+     const mineNumber = document.createElement("p");
+     mineNumber.textContent = mines.length
+     tile.element.appendChild(mineNumber);
+     console.log("A p was created with the value: " + mines.length)
+  }
+}
 
-  // //look through the mines array 
-  //     if (mines.length === 0) { //if the array contains NO mines
-  //         adjTiles.forEach(revealTile()) //loop through the array of adjacent tiles and reveal them if they also do not have adjacent mines.
-  //     else { //for any tile that does have adjacent mines
-  //         tile.element.innerHTML = 
-  //         <p>${mines.length}</p> //update the tile to have the number of mines, found by the lenth of the mines array.
-  //     }
-  //     }
-  //   }
 
 
-
-function revealTile(tile) {
+function revealTile(tile, board) {
   
   if (tile.mine === true) {
     tile.element.setAttribute("class", "bomb");
@@ -98,7 +87,9 @@ function revealTile(tile) {
   } else {
     tile.element.setAttribute("class", "revealed");
     tile.hidden = false;
-    console.log(tile.hidden);
+    // console.log(tile.hidden);
+    nearbyTile(tile, board);
+
   }
   // console.log(board); //remove board console logs and then from revealTile, createDiv param and argument. 
 }
@@ -109,6 +100,6 @@ function revealTile(tile) {
 // createGameBoard(boardSize, numberOfMines);
 
 window.addEventListener("load", function() {
-createGameBoard(5, 10);
+createGameBoard(5, 1);
 // document.querySelector("div.board").addEventListener("click", revealTile);
 });
