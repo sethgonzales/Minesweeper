@@ -51,6 +51,7 @@ function createDiv(boardSize, tile) {
 function revealTile(tile) {
   
   if (tile.mine === true) {
+    tile.element.setAttribute("class", "bomb");
     console.log(tile.mine);
     //change CSS color to red for that tile
     // game over

@@ -3,6 +3,11 @@
   box-sizing: border-box;
 }
 
+.bomb {
+  background-color: red;
+  /* background-image: url("./flag-triangle-svgrepo-com.svg"); */
+}
+
 body {
   margin: 0;
   background-color: #333;
