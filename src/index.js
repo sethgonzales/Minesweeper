@@ -13,34 +13,33 @@ for (let x = 0; x < boardSize; x++) {
       mine: false,
       flag: false,
     };
-    createDiv(tile);
+    createDiv(boardSize, tile);
     row.push(tile);
   }
   board.push(row);
 }
-console.log(board);
 setMinePosition (board, numberOfMines);
+console.log(board);
 return board;  
 }
 
 function setMinePosition (board, numberOfMines) {
   let minesPlaced = 0;
-  
   while (minesPlaced < numberOfMines) {
-    const x = Math.floor(Math.random() * boardSize);
-    const y = Math.floor(Math.random() * boardSize);
-  
-    if (!board[x][y].tile.mine === true) {
-      board[x][y].tile.mine = true;
+    const x = Math.floor(Math.random() * board.length);
+    const y = Math.floor(Math.random() * board.length);
+    if (!board[x][y].mine === true) {
+      board[x][y].mine = true;
       minesPlaced++;
-    }// not working figure out tomorrow
+    }
 }
 }
   
 //UI Logic 
-function createDiv(tile) {
+function createDiv(boardSize, tile) {
   const element = document.createElement("div");
   tile.element = element;
+  tile.element.addEventListener("click", revealTile(tile));
 
   const boardElement = document.querySelector(".board");
   boardElement.style.setProperty("--size", boardSize);
@@ -48,6 +47,24 @@ function createDiv(tile) {
   return element;
 }
 
-const boardSize = 5;
-const numberOfMines = 10;
-createGameBoard(boardSize, numberOfMines);
+function revealTile(tile) {
+  if (tile.mine === true) {
+    console.log("clicked");
+    //change CSS color to red for that tile
+    // game over
+  } else {
+    console.log("else");
+    // reveal the square
+  }
+  console.log("you workin");
+}
+
+
+// const boardSize = 5;
+// const numberOfMines = 15;
+// createGameBoard(boardSize, numberOfMines);
+
+window.addEventListener("load", function() {
+createGameBoard(5, 10);
+document.querySelector("div.board").addEventListener("click", revealTile);
+});
