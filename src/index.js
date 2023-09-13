@@ -82,7 +82,7 @@ function reveal(tile, mines, surroundingTiles, board) {
 function revealTile(tile, board) {
   if (tile.mine === true) {
     tile.element.setAttribute("class", "bomb");
-    gameOver("lose");
+    gameOver("lose", board);
   } else if (tile.hidden === true) { //check if true so that we cannot keep clicking on the same tile
     tile.element.setAttribute("class", "revealed");
     tile.hidden = false;
@@ -94,7 +94,6 @@ function revealTile(tile, board) {
 
 function checkWin(board) {
   let hasWon = true;
-
   for (let x = 0; x < board.length; x++) {
     for (let y = 0; y < board[x].length; y++) {
       if (board[x][y].hidden === true && board[x][y].mine === false) {
@@ -102,24 +101,33 @@ function checkWin(board) {
       }
     }
   }
-
   if (hasWon) {
-    gameOver("win");
+    gameOver("win", board);
   }
 }
 
-function gameOver(gameStatus) {
+function gameOver(gameStatus, board) {
+  document.querySelector(".board").addEventListener("click", endPropagation, { capture: true });
   if (gameStatus === "lose") {
-    console.log("You lose");
-    document.querySelector(".board").addEventListener("click", stopProp, { capture: true});
+    const loseText = document.createElement("p");
+    loseText.textContent = "You Lose";
+    document.body.appendChild(loseText);
+    for (let x = 0; x < board.length; x++) {
+      for (let y = 0; y < board[x].length; y++) {
+        if (board[x][y].mine === true) {
+          board[x][y].element.setAttribute("class", "bomb");
+        }
+      }
+    }
   } else if (gameStatus === "win") {
-    console.log("You win");
-    document.querySelector(".board").addEventListener("click", stopProp, { capture: true});
+    const winText = document.createElement("p");
+    winText.textContent = "You Win!!!!!!!!!!";
+    document.body.appendChild(winText);
   }
 }
 
-function stopProp(e) {
-  e.stopImmediatePropagation();
+function endPropagation(event) {
+  event.stopImmediatePropagation();
 }
 
 window.addEventListener("load", function () {
