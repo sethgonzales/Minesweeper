@@ -69,7 +69,7 @@ function createDiv(boardSize, tile, board) {
 function reveal(tile, mines, surroundingTiles, board) {
 
   if (mines.length === 0) {
-    surroundingTiles.forEach(function(nearbyTile) {
+    surroundingTiles.forEach(function (nearbyTile) {
       revealTile(nearbyTile, board); //for each of the tiles in surrTiles array, find their nearby tiles...THEN for the nearby tiles, run them through reveal tile
     });
   } else {
@@ -82,14 +82,54 @@ function reveal(tile, mines, surroundingTiles, board) {
 function revealTile(tile, board) {
   if (tile.mine === true) {
     tile.element.setAttribute("class", "bomb");
-    // game over
+    gameOver("lose", board);
   } else if (tile.hidden === true) { //check if true so that we cannot keep clicking on the same tile
     tile.element.setAttribute("class", "revealed");
     tile.hidden = false;
     nearbyTile(tile, board);
+    checkWin(board);
   }
 }
 
+
+function checkWin(board) {
+  let hasWon = true;
+  for (let x = 0; x < board.length; x++) {
+    for (let y = 0; y < board[x].length; y++) {
+      if (board[x][y].hidden === true && board[x][y].mine === false) {
+        hasWon = false;
+      }
+    }
+  }
+  if (hasWon) {
+    gameOver("win", board);
+  }
+}
+
+function gameOver(gameStatus, board) {
+  document.querySelector(".board").addEventListener("click", endPropagation, { capture: true });
+  if (gameStatus === "lose") {
+    const loseText = document.createElement("p");
+    loseText.textContent = "You Lose";
+    document.body.appendChild(loseText);
+    for (let x = 0; x < board.length; x++) {
+      for (let y = 0; y < board[x].length; y++) {
+        if (board[x][y].mine === true) {
+          board[x][y].element.setAttribute("class", "bomb");
+        }
+      }
+    }
+  } else if (gameStatus === "win") {
+    const winText = document.createElement("p");
+    winText.textContent = "You Win!!!!!!!!!!";
+    document.body.appendChild(winText);
+  }
+}
+
+function endPropagation(event) {
+  event.stopImmediatePropagation();
+}
+
 window.addEventListener("load", function () {
-  createGameBoard(10, 10);
+  createGameBoard(10, 5);
 });
