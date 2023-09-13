@@ -111,9 +111,15 @@ function checkWin(board) {
 function gameOver(gameStatus) {
   if (gameStatus === "lose") {
     console.log("You lose");
+    document.querySelector(".board").addEventListener("click", stopProp, { capture: true});
   } else if (gameStatus === "win") {
     console.log("You win");
+    document.querySelector(".board").addEventListener("click", stopProp, { capture: true});
   }
+}
+
+function stopProp(e) {
+  e.stopImmediatePropagation();
 }
 
 window.addEventListener("load", function () {
