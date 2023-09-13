@@ -4,12 +4,14 @@
 }
 
 .bomb {
-  background-color: red;
-  /* background-image: url("./flag-triangle-svgrepo-com.svg"); */
+  background-image: url( "./../../img/bomb.png" );
+  background-size: cover;
+  background-position: center;
+  background-color: lightgray;
 }
 
 .revealed {
-  background-color: green;
+  background-color: #ff6ec7;
 }
 
 body {
