@@ -33,7 +33,7 @@ This project is a student recreation of the classic 1990s Microsoft logic puzzle
 
 ## Known Bugs
 
-* _No known bugs_
+The "You Win" text appears in the DOM multiple times when the win condition is met on the first click of the game.
 
 
 ## License
