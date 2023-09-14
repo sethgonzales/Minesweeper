@@ -122,7 +122,6 @@ function gameOver(gameStatus, board) {
       }
     }
   } else if (gameStatus === "win") {
-    const overlayWin = document.querySelector('.overlayWin');
     const winText = document.createElement("p");
     overlayWin.style.display = 'block';
     overlay.style.display = 'none';
