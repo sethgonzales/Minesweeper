@@ -106,8 +106,12 @@ function checkWin(board) {
 
 function gameOver(gameStatus, board) {
   document.querySelector(".board").addEventListener("click", endPropagation, { capture: true });
+  const overlay = document.querySelector('.overlay');
+  const overlayWin = document.querySelector('.overlayWin');
   if (gameStatus === "lose") {
     const loseText = document.createElement("p");
+    overlay.style.display = 'block';
+    overlayWin.style.display = 'none';
     loseText.textContent = "You Lose";
     document.body.appendChild(loseText);
     for (let x = 0; x < board.length; x++) {
@@ -118,7 +122,10 @@ function gameOver(gameStatus, board) {
       }
     }
   } else if (gameStatus === "win") {
+    const overlayWin = document.querySelector('.overlayWin');
     const winText = document.createElement("p");
+    overlayWin.style.display = 'block';
+    overlay.style.display = 'none';
     winText.textContent = "You Win!!!!!!!!!!";
     document.body.appendChild(winText);
   }

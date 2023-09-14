@@ -4,7 +4,7 @@
 }
 
 .bomb {
-  background-image: url( "./../../img/bomb.png" );
+  background-image: url( "./../img/bomb.png" );
   background-size: cover;
   background-position: center;
   background-color: lightgray;
@@ -24,6 +24,37 @@ body {
   color: white;
 }
 
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 80%;
+  height: 80%;
+  display: none;
+  background-image: url("../img/loseGame.png");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.8;
+  z-index: 2;
+}
+
+.overlayWin {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 80%;
+  height: 80%;
+  display: none;
+  background-image: url("../img/win.png");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.8;
+  z-index: 2;
+}
+
+.board-container {
+  position: relative;
+}
 .board {
   display: inline-grid;
   padding: 10px;
