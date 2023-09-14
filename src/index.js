@@ -19,7 +19,6 @@ function createGameBoard(boardSize, numberOfMines) {
     board.push(row);
   }
   setMinePosition(board, numberOfMines);
-  console.log(board);
   return board;
 }
 
@@ -36,7 +35,6 @@ function nearbyTile(tile, board) {
       }
     }
   }
-  console.log(surroundingTiles);
   const mines = surroundingTiles.filter(tile => tile.mine === true);
   reveal(tile, mines, surroundingTiles, board);
 }
