@@ -58,14 +58,27 @@ function createDiv(boardSize, tile, board) {
   tile.element.addEventListener("click", function () {
     revealTile(tile, board);
   });
+  tile.element.addEventListener("contextmenu", function (event) {
+    event.preventDefault();
+    flagTile(tile);
+  });
   const boardElement = document.querySelector(".board");
   boardElement.style.setProperty("--size", boardSize);
   boardElement.append(tile.element);
   return element;
 }
 
-function reveal(tile, mines, surroundingTiles, board) {
+function flagTile(tile) {
+  if (tile.flag === true) {
+    tile.flag = false;
+    tile.element.removeAttribute("class");
+  } else if (tile.hidden === true) {
+    tile.flag = true;
+    tile.element.classList.add("flag");
+  }
+}
 
+function reveal(tile, mines, surroundingTiles, board) {
   if (mines.length === 0) {
     surroundingTiles.forEach(function (nearbyTile) {
       revealTile(nearbyTile, board); //for each of the tiles in surrTiles array, find their nearby tiles...THEN for the nearby tiles, run them through reveal tile
@@ -78,6 +91,10 @@ function reveal(tile, mines, surroundingTiles, board) {
 }
 
 function revealTile(tile, board) {
+  if (tile.flag === true) {
+    tile.flag = false;
+    tile.element.removeAttribute("class");
+  }
   if (tile.mine === true) {
     tile.element.setAttribute("class", "bomb");
     gameOver("lose", board);
@@ -88,7 +105,6 @@ function revealTile(tile, board) {
     checkWin(board);
   }
 }
-
 
 function checkWin(board) {
   let hasWon = true;
@@ -105,7 +121,9 @@ function checkWin(board) {
 }
 
 function gameOver(gameStatus, board) {
-  document.querySelector(".board").addEventListener("click", endPropagation, { capture: true });
+  document.querySelector(".board").removeEventListener("click", endPropagation, { capture: true });
+  document.querySelector(".board").removeEventListener("contextmenu", endPropagation, { capture: true });
+
   const overlay = document.querySelector('.overlay');
   const win = document.querySelector('.win');
   if (gameStatus === "lose") {
@@ -125,7 +143,7 @@ function gameOver(gameStatus, board) {
     const winText = document.createElement("p");
     overlay.style.display = 'none';
     win.style.display = 'block';
-    winText.textContent = "You Win!!!!!!!!!!";
+    winText.textContent = "You Won!";
     document.body.appendChild(winText);
   }
 }
