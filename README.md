@@ -19,16 +19,17 @@ This project is a student recreation of the classic 1990s Microsoft logic puzzle
 
 ## Setup/Installation Requirements
 
-1. Navigate to https://github.com/ian-bravo/Minesweeper in an internet browser.
-2. Click on the green “<> Code” button on the far right-hand side of the page's main column.
-3. On the “Local” tab of the mini-window that opens underneath the “<>Code” button, copy the HTTPS link in the gray bar to your clipboard.
-4. In GitBash (or a terminal shell of your choice), navigate to the directory where you wish to download the project and enter the following prompt (replacing the italicized word with the appropriate link): git clone *url-of-the-repository-copied-in-the-previous-step*
-5. Your chosen directory will now contain a folder titled "Minesweeper".
-6. Navigate into the folder. This is the project's root directory.
-7. After ensuring you have the JavaScript runtime environment Node.js installed on your computer, run the following command from your terminal in the project's root directory: npm install
-8. Node.js' (18.17.1) packet manager, (9.6.7) npm, will fetch the packages listed in the project's package.json file and any dependencies (including webpack) and install all of the source code in a "node_modules" directory which it creates in the project's root directory. The "scripts" key in the package.json file contains the various actions you can perform with the project's files.
-9. To build the project in development mode with webpack, run the following command from your terminal in the project's root directory (and webpack will create a new directory called "dist" in your root directory and populate it with a JS file called "bundle.js" and HTML file called "index.html"): npm run build
-10. To build project and then open the webpack development server, which will launch a browser and live re-bundle and reload the project when changes are made to the code in the "src" directory, run the following command from your terminal in the project's root directory: npm run start
+1. Navigate to the project via [GitHub Pages](https://sethgonzales.github.io/Minesweeper/)
+2. Navigate to https://github.com/ian-bravo/Minesweeper in an internet browser.
+3. Click on the green “<> Code” button on the far right-hand side of the page's main column.
+4. On the “Local” tab of the mini-window that opens underneath the “<>Code” button, copy the HTTPS link in the gray bar to your clipboard.
+5. In GitBash (or a terminal shell of your choice), navigate to the directory where you wish to download the project and enter the following prompt (replacing the italicized word with the appropriate link): git clone *url-of-the-repository-copied-in-the-previous-step*
+6. Your chosen directory will now contain a folder titled "Minesweeper".
+7. Navigate into the folder. This is the project's root directory.
+8. After ensuring you have the JavaScript runtime environment Node.js installed on your computer, run the following command from your terminal in the project's root directory: npm install
+9. Node.js' (18.17.1) packet manager, (9.6.7) npm, will fetch the packages listed in the project's package.json file and any dependencies (including webpack) and install all of the source code in a "node_modules" directory which it creates in the project's root directory. The "scripts" key in the package.json file contains the various actions you can perform with the project's files.
+10. To build the project in development mode with webpack, run the following command from your terminal in the project's root directory (and webpack will create a new directory called "dist" in your root directory and populate it with a JS file called "bundle.js" and HTML file called "index.html"): npm run build
+11. To build project and then open the webpack development server, which will launch a browser and live re-bundle and reload the project when changes are made to the code in the "src" directory, run the following command from your terminal in the project's root directory: npm run start
 
 
 ## Known Bugs
