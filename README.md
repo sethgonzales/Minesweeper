@@ -14,8 +14,17 @@
 
 
 ## Description
-
+<p align="center">
+  <img src="./img/minesweeper playthrough.gif" alt="playthrough of Minesweeper" width="30%">
+</p>
 This project is a student recreation of the classic 1990s Microsoft logic puzzle "Minesweeper". The player can left click on a tile to reveal its contents. If the player clicks on a mine, the game is over. If the player clicks on a tile with no surrounding mines, the tile itself and all surrounding tiles without mines are revealed. The player wins when all tiles without mines have been revealed. To play the game after it's completed, simply refresh the page.
+
+<p align="center">
+  <img src="./img/‎overview.png" alt="overview of Minesweeper" width="30%">
+  <img src="./img/‎minesweeper.png" alt="overview of game logic" width="30%">
+</p>
+
+
 
 ## Setup/Installation Requirements
 
